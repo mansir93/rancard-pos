@@ -7,7 +7,7 @@ import { Typography } from "@material-tailwind/react";
 
 const Order = () => {
   const { orders } = useSelector((state) => state.orders);
-//   console.log({ orders });
+  //   console.log({ orders });
   const TABLE_HEAD = [
     "customer",
     "product",
@@ -92,6 +92,7 @@ const Order = () => {
                     {item?.date}
                   </Typography>
                 </td>
+
                 <td className={classes}>
                   <Typography
                     as="a"
@@ -99,9 +100,7 @@ const Order = () => {
                     variant="small"
                     color="blue-gray"
                     className="font-medium"
-                  >
-                    {item?.date}
-                  </Typography>
+                  ></Typography>
                 </td>
               </tr>
             );

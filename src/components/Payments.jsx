@@ -24,6 +24,11 @@ const Payments = () => {
     });
   };
 
+  function convertToLocalDateTime(isoString) {
+    let date = new Date(isoString);
+    return date.toLocaleString();
+  }
+
   const handleClearCart = () => {
     dispatch(clearCart());
   };
@@ -32,12 +37,20 @@ const Payments = () => {
     e.preventDefault();
 
     let orders = items.map((obj) => {
-      return { ...obj, ...formData, date: new Date() };
+      return {
+        ...obj,
+        ...formData,
+        date: convertToLocalDateTime(new Date().toISOString()),
+      };
     });
 
-    dispatch(addOrder(orders));
-    setFormData(initial);
-    handleClearCart();
+    orders.forEach((order) => {
+      console.log(order);
+      dispatch(addOrder(order));
+    });
+
+    // setFormData(initial);
+    // handleClearCart();
   };
 
   return (
