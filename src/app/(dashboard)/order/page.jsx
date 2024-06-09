@@ -22,8 +22,9 @@ const Order = () => {
     <div className="p-4">
       <div className="flex justify-between items-center py-8">
         <div className="font-bold text-3xl">Orders </div>
+        <div className=" text-2xl border p-2">filters </div>
       </div>
-      <table className="w-full min-w-max table-auto text-left">
+      <table className="w-full min-w-max table-auto text-left bg-white">
         <thead>
           <tr>
             {TABLE_HEAD.map((head) => (

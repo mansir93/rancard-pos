@@ -20,12 +20,10 @@ import {
 } from "@heroicons/react/24/solid";
 import DrawerRight from "./Drawer";
 import Payments from "./Payments";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const NavbarTop = () => {
-  const { items, totalQuantity, totalAmount } = useSelector(
-    (state) => state.cart
-  );
+  const { totalQuantity } = useSelector((state) => state.cart);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [ComponentToRender, setComponentToRender] = useState(null);
   const [title, setTitle] = useState("");
@@ -112,12 +110,12 @@ const NavbarTop = () => {
       <Navbar fullWidth className="px-4 py-2 ">
         <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
           <Input
-            type="search"
+            // type="search"
             placeholder="Search"
             containerProps={{
               className: "min-w-[288px]",
             }}
-            className="max-w-md !border-t-blue-gray-300 pl-9 placeholder:text-blue-gray-300 focus:!border-blue-gray-300"
+            className="max-w-md !border-t-blue-gray-300 pl-9 placeholder:text-blue -gray-300 focus:!border-blue-gray-300"
             labelProps={{
               className: "before:content-none after:content-none",
             }}

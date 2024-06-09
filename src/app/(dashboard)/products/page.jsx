@@ -24,7 +24,7 @@ const Products = () => {
       <div className="flex justify-between items-center py-8">
         <div className="font-bold text-3xl">Product History </div>
       </div>
-      <table className="w-full min-w-max table-auto text-left">
+      <table className="w-full min-w-max table-auto text-left bg-white">
         <thead>
           <tr>
             {TABLE_HEAD.map((head) => (

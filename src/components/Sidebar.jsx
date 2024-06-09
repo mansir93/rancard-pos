@@ -1,25 +1,18 @@
 "use client";
-import { RxActivityLog } from "react-icons/rx";
-import { FaUsersCog, FaSms } from "react-icons/fa";
-import { BiTransferAlt } from "react-icons/bi";
-import { MdCalendarMonth } from "react-icons/md";
-import { BiUserPlus } from "react-icons/bi";
-import { CgUserList } from "react-icons/cg";
-import { GoGraph } from "react-icons/go";
-import React, { useEffect, useState, useMemo } from "react";
-import { FaChartPie, FaBars } from "react-icons/fa";
+import React, { useState } from "react";
+import { HiOutlineDocumentReport } from "react-icons/hi";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FiShoppingBag } from "react-icons/fi";
+import { AiOutlineHome } from "react-icons/ai";
+
 import classNames from "classnames";
-import { useSearchParams, useRouter,usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 
-
 import Link from "next/link";
-// import Cookies from "js-cookie";
 
 const SidebarNav = () => {
-  // const link = Cookies.get("v-id");
-  const searchParams = useSearchParams();
   const pathname = usePathname();
 
   const [collapsed, setCollapsed] = useState(false);
@@ -27,22 +20,22 @@ const SidebarNav = () => {
   const menuItems = [
     {
       label: "Home",
-      icon: <GoGraph size={30} />,
+      icon: <AiOutlineHome size={30} />,
       link: `/home`,
     },
     {
       label: "Products",
-      icon: <GoGraph size={30} />,
+      icon: <FiShoppingBag size={30} />,
       link: `/products`,
     },
     {
       label: "Order",
-      icon: <GoGraph size={30} />,
+      icon: <AiOutlineShoppingCart size={30} />,
       link: `/order`,
     },
     {
       label: "Report",
-      icon: <GoGraph size={30} />,
+      icon: <HiOutlineDocumentReport size={30} />,
       link: `/report`,
     },
   ];
@@ -52,17 +45,17 @@ const SidebarNav = () => {
   };
 
   const getNavItemClasses = (menu) =>
-    classNames("cursor-pointer w-full hover:text-primary-content", {
+    classNames("cursor-pointer w-full rounded-xl", {
       "text-primary": !isMenuActive(menu),
-      "text-primary-dark border-b-2 border-primary-light  ": isMenuActive(menu),
+      "text-white bg-green-500  ": isMenuActive(menu),
     });
 
   return (
     <div className="h-full hidden md:block bg-foreground">
       <Sidebar collapsed={collapsed} style={{ height: "100dvh" }}>
         <Menu iconShape="square">
-          <div className="space-y-8">
-            <div className="px-8 py-4 text-3xl">
+          <div className="space-y-8 p-4">
+            <div className="px-8 py-4 text-3xl font-bold text-green-500">
               Syst
             </div>
             {/* <MenuItem
