@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
+  // access: typeof window !== "undefined" ? window.localStorage.getItem('access') : false, help online
   isAuthenticated: !!localStorage.getItem("user"),
   error: null,
 };
