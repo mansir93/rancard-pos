@@ -20,9 +20,12 @@ import {
 } from "@heroicons/react/24/solid";
 import DrawerRight from "./Drawer";
 import Payments from "./Payments";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/slices/authSlice";
 
 const NavbarTop = () => {
+  const dispatch = useDispatch();
+
   const { totalQuantity } = useSelector((state) => state.cart);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [ComponentToRender, setComponentToRender] = useState(null);
@@ -34,21 +37,8 @@ const NavbarTop = () => {
     setOpenDrawer(true);
   };
 
-  const profileMenuItems = [
-    {
-      label: "My Profile",
-      icon: UserCircleIcon,
-    },
-    {
-      label: "Sign Out",
-      icon: PowerIcon,
-    },
-  ];
-
   function ProfileMenu() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-    const closeMenu = () => setIsMenuOpen(false);
 
     return (
       <div className="flex justify-center gap-4 items-center">
@@ -81,24 +71,11 @@ const NavbarTop = () => {
             </Button>
           </MenuHandler>
           <MenuList className="p-1">
-            {profileMenuItems.map(({ label, icon }, key) => {
-              const isLastItem = key === profileMenuItems.length - 1;
-              return (
-                <MenuItem
-                  key={label}
-                  onClick={closeMenu}
-                  className={`flex items-center gap-2 rounded ${
-                    isLastItem
-                      ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                      : ""
-                  }`}
-                >
-                  <Typography as="span" color={isLastItem ? "red" : "inherit"}>
-                    {label}
-                  </Typography>
-                </MenuItem>
-              );
-            })}
+            <MenuItem>
+              <Typography onClick={() => dispatch(logout())} color="red">
+                Logout
+              </Typography>
+            </MenuItem>
           </MenuList>
         </Menu>
       </div>

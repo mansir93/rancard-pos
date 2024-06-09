@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import { Button } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/slices/authSlice";
@@ -27,6 +27,10 @@ const Login = () => {
     e.preventDefault();
     dispatch(login(formData));
   };
+
+  useEffect(() => {
+    isAuthenticated && router.push("/home") ;
+  }, [isAuthenticated]);
   return (
     <div className="">
       <h1 className="w-full text-4xl font-bold mb-16">Log in to Syst</h1>
